@@ -1,5 +1,7 @@
 package com.athena
 
+import com.athena.dao.DatabaseFactory
+import com.athena.di.configureDi
 import com.athena.plugins.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
@@ -11,7 +13,9 @@ fun main() {
 }
 
 fun Application.module() {
+    DatabaseFactory.init()
     configureSerialization()
+    configureDi()
     configureSecurity()
     configureRouting()
 }
