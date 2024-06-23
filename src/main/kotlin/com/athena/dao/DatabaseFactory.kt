@@ -37,4 +37,7 @@ object DatabaseFactory {
 
     suspend fun <T> dbQuery(block: suspend () -> T)=
         newSuspendedTransaction(Dispatchers.IO) { block() }
+    /*
+    newSuspendedTransaction(Dispatchers.IO): This function likely comes from an external library (such as Exposed, a Kotlin SQL framework). It starts a new database transaction on the IO dispatcher.
+    */
 }

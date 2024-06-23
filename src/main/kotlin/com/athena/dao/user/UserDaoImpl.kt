@@ -4,6 +4,7 @@ import com.athena.dao.DatabaseFactory.dbQuery
 import com.athena.model.SignUpParams
 import com.athena.model.User
 import com.athena.model.UserRow
+import com.athena.security.hashPassword
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
@@ -14,7 +15,7 @@ class UserDaoImpl : UserDao {
             val insertSatement = UserRow.insert {
                 it[name] = params.name
                 it[email] = params.email
-                it[password] = params.password
+                it[password] = hashPassword(params.password)
             }
 
             insertSatement.resultedValues?.singleOrNull()?.let {

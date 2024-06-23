@@ -1,4 +1,4 @@
-package com.athena.repository.user
+package com.athena.repo
 
 import com.athena.model.AuthResponse
 import com.athena.model.SignInParams
